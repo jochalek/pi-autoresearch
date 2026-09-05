@@ -1,0 +1,32 @@
+goal: "Minimize benchmark latency without changing behavior"
+
+editable:
+  - "src/**"
+  - "config/**"
+
+protected:
+  - "tests/**"
+  - "benchmarks/**"
+
+validate:
+  command: "npm test"
+
+evaluate:
+  command: "./scripts/benchmark.sh"
+  # The command should print the primary numeric score as its final non-empty line,
+  # or set score_regex below.
+  score_regex: "score\\s*=\\s*([0-9.]+)"
+  direction: "minimize"
+
+knowledge:
+  paths:
+    - "./knowledge"
+  optional: true
+
+supervisor:
+  stagnation_attempts: 5
+  watchdog:
+    soft_tool_calls: 45
+    hard_tool_calls: 80
+    max_failed_tools: 12
+    max_repeated_bash: 5

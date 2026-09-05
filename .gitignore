@@ -1,0 +1,9 @@
+node_modules/
+*.log
+.DS_Store
+
+# Per-project runtime research memory. These belong to the target project,
+# not to the implementation lineage unless that project explicitly tracks them.
+experiments.tsv
+research.md
+.pi/research-state.json

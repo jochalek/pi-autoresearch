@@ -1,0 +1,4 @@
+[tools]
+node = "22"
+
+after_install = "npm install"

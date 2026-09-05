@@ -1,0 +1,26 @@
+{
+  "name": "pi-autoresearch",
+  "version": "0.1.0",
+  "description": "A generic autoresearch outer loop for Pi: evaluator, lineage, compact experiment memory, supervision, watchdogs, and optional knowledge.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": ["pi-package", "pi", "autoresearch", "agent", "research", "optimization"],
+  "pi": {
+    "extensions": ["./extensions"],
+    "skills": ["./skills"]
+  },
+  "dependencies": {
+    "@earendil-works/pi-coding-agent": "^0.85.0",
+    "@sinclair/typebox": "^0.34.41",
+    "minimatch": "^10.0.3",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "typescript": "^5.9.2"
+  },
+  "scripts": {
+    "check": "tsc --noEmit",
+    "test": "npm run check"
+  }
+}
