@@ -21,7 +21,7 @@ NVIDIA AVO, while remaining a normal Pi package rather than a Pi fork.
 Pi packages can be installed straight from Git:
 
 ```bash
-pi install git:github.com/YOUR_USER/pi-autoresearch
+pi install git:github.com/jochalek/pi-autoresearch
 ```
 
 For development, this repo pins Node 22 with mise:
