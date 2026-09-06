@@ -48,7 +48,7 @@ this explicit opt-in flow and documents optional knowledge and generated state.
 The preferred installation for an individual project is:
 
 ```bash
-cd my-kaggle-project
+cd my-project
 pi install -l git:github.com/jochalek/pi-autoresearch
 ```
 

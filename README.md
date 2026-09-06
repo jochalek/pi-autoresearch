@@ -21,7 +21,7 @@ NVIDIA AVO, while remaining a normal Pi package rather than a Pi fork.
 Enable autoresearch explicitly in each project by creating `.pi/research.yaml`:
 
 ```bash
-cd my-kaggle-project
+cd my-project
 pi install -l git:github.com/jochalek/pi-autoresearch
 
 mkdir -p .pi knowledge
