@@ -16,13 +16,23 @@ The design intentionally borrows the simple experiment loop popularized by
 Karpathy's autoresearch and the evaluator/lineage/knowledge/supervision ideas in
 NVIDIA AVO, while remaining a normal Pi package rather than a Pi fork.
 
-## Install
+## Install and configure
 
-Pi packages can be installed straight from Git:
+Enable autoresearch explicitly in each project by creating `.pi/research.yaml`:
 
 ```bash
-pi install git:github.com/jochalek/pi-autoresearch
+cd my-kaggle-project
+pi install -l git:github.com/jochalek/pi-autoresearch
+
+mkdir -p .pi knowledge
+$EDITOR .pi/research.yaml
 ```
+
+The presence of `.pi/research.yaml` enables autoresearch for that project. The
+`knowledge/` directory is optional, and `experiments.tsv`, `research.md`, and
+`.pi/research-state.json` are generated automatically as research runs.
+Without the config file, the package has no autoresearch tools or watchdog hooks
+and Pi behaves normally.
 
 For development, this repo pins Node 22 with mise:
 
@@ -36,15 +46,9 @@ pi -e ./extensions/research-loop.ts
 Pi currently uses `@earendil-works/pi-coding-agent`; the older
 `@mariozechner/pi-coding-agent` package is deprecated.
 
-## Configure a target project
+## Configure the research contract
 
-Copy the example contract:
-
-```bash
-mkdir -p .pi
-cp /path/to/pi-autoresearch/examples/research.yaml .pi/research.yaml
-mkdir -p knowledge
-```
+Use `examples/research.yaml` as a reference. The existing config schema is:
 
 A minimal contract:
 

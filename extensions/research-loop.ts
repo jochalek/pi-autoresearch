@@ -333,6 +333,10 @@ function tripReason(iter: IterationState, cfg: ResearchConfig): string | undefin
 }
 
 export default function autoresearchExtension(pi: ExtensionAPI) {
+  // The contract is the explicit project-level opt-in. Check it while the
+  // extension is loaded so disabled projects get neither tools nor hooks.
+  if (!existsSync(path.join(process.cwd(), CONFIG_PATH))) return;
+
   pi.registerTool({
     name: "research_status",
     label: "Research Status",

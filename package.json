@@ -21,6 +21,6 @@
   },
   "scripts": {
     "check": "tsc --noEmit",
-    "test": "npm run check"
+    "test": "npm run check && node --experimental-strip-types --test tests/*.test.mjs"
   }
 }
