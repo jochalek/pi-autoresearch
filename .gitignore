@@ -7,3 +7,4 @@ node_modules/
 experiments.tsv
 research.md
 .pi/research-state.json
+.pi/research-state.json.*

@@ -34,6 +34,34 @@ The presence of `.pi/research.yaml` enables autoresearch for that project. The
 Without the config file, the package has no autoresearch tools or watchdog hooks
 and Pi behaves normally.
 
+## Run the outer loop
+
+From an opted-in research project, run:
+
+```bash
+pi-autoresearch run
+```
+
+Each loop iteration starts a new `pi --no-session --print` worker and gives it
+one experiment. The worker must leave a durable completed result in
+`.pi/research-state.json`; the runner refuses to silently repeat a worker that
+made no progress. If a worker is interrupted while an iteration is active, the
+runner (or the next invocation after it is stopped) rolls back only the
+configured editable paths, records an `aborted` result, and requires strategy
+supervision before continuing. Changes outside `editable` or in `protected`
+paths stop recovery for manual inspection.
+
+The loop has no session reuse or conversation compaction. Stop it with Ctrl-C or
+SIGTERM; the signal is forwarded to the current worker. Use `--cwd` to select a
+project, `--model` (or `PI_AUTORESEARCH_MODEL`) to select a model, or
+`--pi-command` (or `PI_AUTORESEARCH_PI_COMMAND`) to select a Pi executable:
+
+```bash
+pi-autoresearch run --cwd ./my-project --model anthropic/claude-sonnet-4-5
+```
+
+The runner continues until manually stopped.
+
 For development, this repo pins Node 22 with mise:
 
 ```bash

@@ -25,6 +25,13 @@ contract is `.pi/research.yaml`.
 `experiments.tsv` is compact episodic memory. `research.md` is a short, rewritten
 summary of current understanding. Git is the accepted implementation lineage.
 
+## Outer-loop workers
+
+When the prompt says this is an outer-loop worker or asks for exactly one
+experiment, perform one `research_start`/outcome cycle only. Do not repeat the
+loop, reuse a session, or compact the conversation; return after the durable
+record has been written.
+
 ## Supervision
 
 When `research_status` reports strategy supervision is required, stop editing and

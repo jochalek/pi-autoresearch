@@ -181,7 +181,8 @@ function matchesAny(file: string, patterns: string[]): boolean {
 }
 
 function isMeta(file: string): boolean {
-  return META_PATHS.has(file.replace(/\\/g, "/"));
+  const normalized = file.replace(/\\/g, "/");
+  return META_PATHS.has(normalized) || normalized.startsWith(`${STATE_PATH}.`);
 }
 
 async function assertIterationChangesAllowed(cwd: string, cfg: ResearchConfig): Promise<ChangedPath[]> {

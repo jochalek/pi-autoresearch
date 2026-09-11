@@ -5,6 +5,9 @@
   "type": "module",
   "license": "MIT",
   "keywords": ["pi-package", "pi", "autoresearch", "agent", "research", "optimization"],
+  "bin": {
+    "pi-autoresearch": "./bin/pi-autoresearch.mjs"
+  },
   "pi": {
     "extensions": ["./extensions"],
     "skills": ["./skills"]
@@ -20,7 +23,7 @@
     "typescript": "^5.9.2"
   },
   "scripts": {
-    "check": "tsc --noEmit",
+    "check": "tsc --noEmit && node --check cli/run-loop.mjs && node --check bin/pi-autoresearch.mjs",
     "test": "npm run check && node --experimental-strip-types --test tests/*.test.mjs"
   }
 }
